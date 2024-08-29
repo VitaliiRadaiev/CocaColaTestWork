@@ -1,0 +1,31 @@
+@import "./tailwind";
+
+@import "./mixins.scss";
+
+@import "./fonts.scss";
+
+@import "./vars.scss";
+
+// plugins
+@import "../../plugins/swiper/swiper-bundle.scss";
+@import "../../plugins/snowflakes/snowflakes.scss";
+@import "../../plugins/select/select.scss";
+// /= plugins
+
+@import "./utils.scss";
+
+@import "./main.scss";
+
+// components
+@import "../../components/text-content/text-content.scss";
+@import "../../components/buttons/buttons.scss";
+@import "../../components/form-fields/form-fields.scss";
+// /= components
+
+// sections
+@import "../../sections/header/header.scss";
+@import "../../sections/full-page-screens/full-page-screens.scss";
+@import "../../sections/intro/intro.scss";
+@import "../../sections/presents/presents.scss";
+@import "../../sections/write-us/write-us.scss";
+// /= sections

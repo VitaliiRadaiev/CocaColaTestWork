@@ -1,0 +1,40 @@
+.intro {
+    @media (min-width: $mq-lg) {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    &__constrained-content {
+        max-width: 71.6rem;
+        padding: 22.1rem 0 4rem;
+    
+
+        @media (min-width: $mq-lg) {
+            padding: 0;
+        }
+    }
+
+    &__title {
+
+    }
+
+    &__subtitle {
+        margin-top: 1.3rem;
+    
+        @media (min-width: $mq-lg) {
+            margin-top: 2rem;
+        }
+    }
+
+    &__btn-slot {
+        text-align: center;
+        margin-top: 4.2rem;
+
+        @media (min-width: $mq-lg) {
+            text-align: start;
+            margin-top: 2.6rem;
+        }
+    }
+}

@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CocaCola</title>
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Risque&family=Roboto&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="assets/css/style.css">
+	<style>
+		.page-loaded .page-loader {
+			opacity: 0;
+			visibility: hidden;
+		}
+
+		.page-loaded.hide-loader .page-loader {
+			display: none;
+		}
+
+		.page-loader {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: #141429;
+			z-index: 100;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-align: center;
+			-ms-flex-align: center;
+			align-items: center;
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+			color: #fff;
+			transition: opacity .4s ease, visibility .4s ease;
+		}
+
+		.lds-roller,
+		.lds-roller div,
+		.lds-roller div:after {
+			-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+
+		.lds-roller {
+			display: inline-block;
+			position: relative;
+			width: 80px;
+			height: 80px;
+		}
+
+		.lds-roller div {
+			-webkit-animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+			animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+			-webkit-transform-origin: 40px 40px;
+			-ms-transform-origin: 40px 40px;
+			transform-origin: 40px 40px;
+		}
+
+		.lds-roller div:after {
+			content: " ";
+			display: block;
+			position: absolute;
+			width: 7.2px;
+			height: 7.2px;
+			border-radius: 50%;
+			background: currentColor;
+			margin: -3.6px 0 0 -3.6px;
+		}
+
+		.lds-roller div:nth-child(1) {
+			-webkit-animation-delay: -0.036s;
+			animation-delay: -0.036s;
+		}
+
+		.lds-roller div:nth-child(1):after {
+			top: 62.62742px;
+			left: 62.62742px;
+		}
+
+		.lds-roller div:nth-child(2) {
+			-webkit-animation-delay: -0.072s;
+			animation-delay: -0.072s;
+		}
+
+		.lds-roller div:nth-child(2):after {
+			top: 67.71281px;
+			left: 56px;
+		}
+
+		.lds-roller div:nth-child(3) {
+			-webkit-animation-delay: -0.108s;
+			animation-delay: -0.108s;
+		}
+
+		.lds-roller div:nth-child(3):after {
+			top: 70.90963px;
+			left: 48.28221px;
+		}
+
+		.lds-roller div:nth-child(4) {
+			-webkit-animation-delay: -0.144s;
+			animation-delay: -0.144s;
+		}
+
+		.lds-roller div:nth-child(4):after {
+			top: 72px;
+			left: 40px;
+		}
+
+		.lds-roller div:nth-child(5) {
+			-webkit-animation-delay: -0.18s;
+			animation-delay: -0.18s;
+		}
+
+		.lds-roller div:nth-child(5):after {
+			top: 70.90963px;
+			left: 31.71779px;
+		}
+
+		.lds-roller div:nth-child(6) {
+			-webkit-animation-delay: -0.216s;
+			animation-delay: -0.216s;
+		}
+
+		.lds-roller div:nth-child(6):after {
+			top: 67.71281px;
+			left: 24px;
+		}
+
+		.lds-roller div:nth-child(7) {
+			-webkit-animation-delay: -0.252s;
+			animation-delay: -0.252s;
+		}
+
+		.lds-roller div:nth-child(7):after {
+			top: 62.62742px;
+			left: 17.37258px;
+		}
+
+		.lds-roller div:nth-child(8) {
+			-webkit-animation-delay: -0.288s;
+			animation-delay: -0.288s;
+		}
+
+		.lds-roller div:nth-child(8):after {
+			top: 56px;
+			left: 12.28719px;
+		}
+
+		@-webkit-keyframes lds-roller {
+			0% {
+				-webkit-transform: rotate(0deg);
+				transform: rotate(0deg);
+			}
+
+			100% {
+				-webkit-transform: rotate(360deg);
+				transform: rotate(360deg);
+			}
+		}
+
+		@keyframes lds-roller {
+			0% {
+				-webkit-transform: rotate(0deg);
+				transform: rotate(0deg);
+			}
+
+			100% {
+				-webkit-transform: rotate(360deg);
+				transform: rotate(360deg);
+			}
+		}
+
+		@media print {
+
+			header,
+			footer {
+				display: none;
+			}
+		}
+	</style>
+
+	<script>
+		let element = document.querySelector('html');
+		if (element) {
+			let zoom = 1;
+			const setFontSize = () => {
+				let baseWidth = 1440;
+				let baseFontSize = 10;
+				let screenWidth = element.clientWidth;
+				let screenHeight = element.clientHeight;
+				let maxHeight = screenWidth * 0.4817;
+				let value;
+				let heightOffset = (screenHeight / maxHeight) > 1 ? 1 : screenHeight / maxHeight;
+
+				if (screenWidth <= baseWidth) {
+					let scaleFactor = 10;
+					value = (baseFontSize + (screenWidth - baseWidth) * scaleFactor / baseWidth) * zoom;
+				} else {
+					let scaleFactor = 10;
+					value = ((baseFontSize + (screenWidth - baseWidth) * scaleFactor / baseWidth) * heightOffset) * zoom;
+
+					if (value < baseFontSize) value = baseFontSize;
+				}
+
+				element.style.fontSize = value + 'px';
+			}
+
+			setFontSize();
+			window.addEventListener('resize', setFontSize);
+
+			document.addEventListener('wheel', function (event) {
+				if (document.documentElement.clientWidth < 1024) return;
+
+				if (event.ctrlKey || event.metaKey) {
+					if (event.deltaY < 0) {
+						zoom += 0.1
+						setFontSize();
+					} else {
+						zoom -= 0.1
+						setFontSize();
+					}
+					event.preventDefault();
+				}
+			}, { passive: false });
+		}
+	</script>
+
+	
+<script src="assets/js/vendors.js"></script>
+<script src="assets/js/app.js"></script>
+<!-- <script
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7Q82l2QjSzJJk1uUW3OzUBGPTlbk8w1g&callback=initMap&libraries=&v=weekly"
+defer
+></script> -->
+</head>
+
+<body>
+    
+    <div class="page-loader">
+    <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+</div>
+
+    <header class="header">
+    <div class="container-lg header__body">
+        <a href="#" class="header__logo">
+            <img src="assets/images/logo.png" alt="">
+        </a>
+        <nav class="header__nav">
+            <a href="#">
+                <span>
+                    Main
+                </span>
+                <span>
+                    Main
+                </span>
+            </a>
+            <a href="#">
+                <span>
+                    About
+                </span>
+                <span>
+                    About
+                </span>
+            </a>
+            <a href="#">
+                <span>
+                    Products
+                </span>
+                <span>
+                    Products
+                </span>
+            </a>
+            <a href="#">
+                <span>
+                    Contacts
+                </span>
+                <span>
+                    Contacts
+                </span>
+            </a>
+        </nav>
+        <button type="button" class="header__burger burger" data-action="toggle-menu-visibility">
+            <span></span><span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<div data-menu class="menu">
+    <nav class="menu__nav">
+        <a href="#">
+            <span>Home</span> 
+            <!-- Тут додатковий спан, тому що на елементі дві анімації, щоб не конфліктували -->
+        </a>
+        <a href="#">
+            <span>About</span>
+        </a>
+        <a href="#">
+            <span>Products</span>
+        </a>
+        <a href="#">
+            <span>Contacts</span>
+        </a>
+    </nav>
+</div>
+
+    <div class="full-page-screens" data-full-page-screens>
+    <!-- 
+        Продублював слайдера, для для картинок і для контента окремо
+        томущо потрібно було зробити декілька шарів (layers)
+        z-1 картинки
+        z-2 велика сніжинка так що зліва внизу
+        z-3 текстовий контент
+    -->
+    <div class="full-page-screens__backgrounds swiper">
+        <div class="full-page-screens__decor" data-swiper-parallax-y="-140%">
+            <img src="assets/images/snowflake.png" alt="">
+        </div>
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="full-page-screen">
+                    <div class="full-page-screen__bg">
+                        <picture>
+                            <source srcset="assets/images/screen-1-desk.jpg" media="(min-width: 768px)" />
+                            <img src="assets/images/screen-1-mob.jpg" alt="">
+                        </picture>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="full-page-screen">
+                    <div class="full-page-screen__bg">
+                        <picture>
+                            <source srcset="assets/images/screen-2-desk.jpg" media="(min-width: 768px)" />
+                            <img src="assets/images/screen-2-mob.jpg" alt="">
+                        </picture>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="full-page-screen">
+                    <div class="full-page-screen__bg">
+                        <picture>
+                            <source srcset="assets/images/screen-3-desk.jpg" media="(min-width: 768px)" />
+                            <img src="assets/images/screen-3-mob.jpg" alt="">
+                        </picture>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="full-page-screens__content swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="full-page-screen">
+                    <div class="full-page-screen__bg">
+                        <picture>
+                            <source srcset="assets/images/screen-1-desk.jpg" media="(min-width: 768px)" />
+                            <img src="assets/images/screen-1-mob.jpg" alt="">
+                        </picture>
+                    </div>
+                    <div class="full-page-screen__content">
+                        <section class="intro">
+    <div class="container-sm">
+        <div class="intro__constrained-content pt-[10.6rem]">
+            <h1 class="intro__title h1">
+                Main Site Title
+            </h1>
+            <div class="intro__subtitle subtitle">
+                Lorem ipsum descripsum
+            </div>
+            <div class="intro__btn-slot">
+                <a href="#" class="btn-primary">
+                    Call to action
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+                    </div>
+                    <div class="full-page-screen__arrow-down-wrapper">
+                        <div class="container-sm">
+                            <button class="full-page-screen__arrow-down" data-action="next-slide">
+                                <svg width="38" height="37" viewBox="0 0 38 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M17.3153 35.7709C18.2939 36.7449 19.8768 36.7412 20.8508 35.7627L36.7237 19.8159C37.6978 18.8373 37.6941 17.2544 36.7155 16.2803C35.7369 15.3063 34.154 15.31 33.18 16.2885L19.0707 30.4635L4.8958 16.3542C3.91722 15.3802 2.33431 15.3838 1.36027 16.3624C0.38623 17.341 0.389905 18.9239 1.36848 19.8979L17.3153 35.7709ZM16.5 0.00580414L16.5789 34.0048L21.5789 33.9932L21.5 -0.00580414L16.5 0.00580414Z"
+                                        fill="white" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="full-page-screen">
+                    <div class="full-page-screen__bg">
+                        <picture>
+                            <source srcset="assets/images/screen-2-desk.jpg" media="(min-width: 768px)" />
+                            <img src="assets/images/screen-2-mob.jpg" alt="">
+                        </picture>
+                    </div>
+                    <div class="full-page-screen__content">
+                        <section class="presents">
+    <div class="container">
+        <div class="presents__grid" data-tabs>
+            <div class="presents__main">
+                <h2 class="presents__title h2">
+                    At least somewhere you can feel new year atmosphere
+                </h2>
+                <div class="presents__subtitle subtitle">
+                    Choose your present:
+                </div>
+                <div class="presents__tab-triggers">
+                    <button class="presents__tab-trigger" data-tab-trigger="1">
+                        <img src="assets/images/present-img-1.png" alt="">
+                    </button>
+                    <button class="presents__tab-trigger" data-tab-trigger="2">
+                        <img src="assets/images/present-img-2.png" alt="">
+                    </button>
+                    <button class="presents__tab-trigger" data-tab-trigger="3">
+                        <img src="assets/images/present-img-3.png" alt="">
+                    </button>
+                </div>
+            </div>
+            <div class="presents__info">
+                <div class="present-info-card [&:not(.tab-active)]:hidden" data-tab-content="1">
+                    <div class="present-info-card__img">
+                        <img src="assets/images/present-img-1.png" alt="">
+                    </div>
+                    <div class="present-info-card__text-content">
+                        <h3 class="present-info-card__title h3">
+                            Best sock ever
+                        </h3>
+                        <div class="present-info-card__text">
+                            Reuglar sock have no
+                            present inside
+                            Lorem Ipsum is simply dumm y text of the printing and types etting industry. Lorem
+                        </div>
+                    </div>
+                </div>
+                <div class="present-info-card [&:not(.tab-active)]:hidden" data-tab-content="2">
+                    <div class="present-info-card__img">
+                        <img src="assets/images/present-img-2.png" alt="">
+                    </div>
+                    <div class="present-info-card__text-content">
+                        <h3 class="present-info-card__title h3">
+                            Best sock ever 2
+                        </h3>
+                        <div class="present-info-card__text">
+                            Reuglar sock have no
+                            present inside
+                            Lorem Ipsum is simply dumm y text of the printing and types etting industry. Lorem
+                        </div>
+                    </div>
+                </div>
+                <div class="present-info-card [&:not(.tab-active)]:hidden" data-tab-content="3">
+                    <div class="present-info-card__img">
+                        <img src="assets/images/present-img-3.png" alt="">
+                    </div>
+                    <div class="present-info-card__text-content">
+                        <h3 class="present-info-card__title h3">
+                            Best sock ever 3
+                        </h3>
+                        <div class="present-info-card__text">
+                            Reuglar sock have no
+                            present inside
+                            Lorem Ipsum is simply dumm y text of the printing and types etting industry. Lorem
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="full-page-screen">
+                    <div class="full-page-screen__bg">
+                        <picture>
+                            <source srcset="assets/images/screen-3-desk.jpg" media="(min-width: 768px)" />
+                            <img src="assets/images/screen-3-mob.jpg" alt="">
+                        </picture>
+                    </div>
+                    <div class="full-page-screen__content">
+                        <section class="write-us">
+    <div class="container">
+        <div class="write-us__constrained-content">
+            <h2 class="write-us__title h2">
+                Write us
+                for real presents
+            </h2>
+            <form action="/" class="write-us__form write-us-form">
+                <div class="write-us-form__fields grid grid-cols-2 gap-[2.4rem] lg:gap-[2rem]">
+                    <div class="write-us-form__field col-span-2 lg:col-span-1">
+                        <input type="text" class="input" placeholder="Name">
+                    </div>
+                    <div class="write-us-form__field col-span-2 lg:col-span-1" data-mask="+380 99 999 99 99">
+                        <input type="text" class="input" placeholder="Phone">
+                    </div>
+                    <div class="write-us-form__field col-span-2 lg:col-span-1">
+                        <select>
+                            <option value="" selected>Gender</option>
+                            <option value="1">Boy</option>
+                            <option value="2">Girl</option>
+                        </select>
+                    </div>
+                    <div class="write-us-form__field col-span-2 lg:col-span-1">
+                        <input type="email" class="input" placeholder="Email">
+                    </div>
+                    <div class="write-us-form__field col-span-2">
+                        <textarea class="textarea" placeholder="Your wish"></textarea>
+                    </div>
+                </div>
+                <div class="write-us-form__checkboxes">
+                    <label class="checkbox">
+                        <input type="checkbox">
+                        <div class="checkbox__marker"></div>
+                        <div class="checkbox__text">
+                            Whant Coca-cola with present ?
+                        </div>
+                    </label>
+                </div>
+                <div class="write-us-form__submit">
+                    <button class="btn-primary">
+                        Send
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>

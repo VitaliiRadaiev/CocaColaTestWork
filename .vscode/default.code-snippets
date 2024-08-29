@@ -1,0 +1,91 @@
+{
+	// Place your Altman workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"scope": "javascript,typescript",
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	"fileInclude": {
+		"scope": "html",
+		"prefix": "fi",
+		"body": [
+			"@@include($1)$2"
+		],
+		"description": ""
+	},
+	"fileIncludeFromComponents": {
+		"scope": "html",
+		"prefix": "fic",
+		"body": [
+			"@@include('components/$1', {$2})"
+		],
+		"description": ""
+	},
+	"fileIncludeFromSections": {
+		"scope": "html",
+		"prefix": "fis",
+		"body": [
+			"@@include('sections/$1', {$2})"
+		],
+		"description": ""
+	},
+	"minQuery": {
+		"scope": "css,scss",
+		"prefix": "mmin",
+		"body": [
+			"@media (min-width: $$mq-$1) {",
+			"	$2",
+			"}"
+		],
+		"description": ""
+	},
+	"maxQuery": {
+		"scope": "css,scss",
+		"prefix": "mmax",
+		"body": [
+			"@media (max-width: $1) {",
+			"	$2",
+			"}"
+		],
+		"description": ""
+	},
+	"hover": {
+		"scope": "css,scss",
+		"prefix": "minh",
+		"body": [
+			"@media #{$$mouse-device} {",
+			"	&:hover {",
+			"		$2",
+			"	}",
+			"}"
+		],
+		"description": ""
+	},
+	"contain image in container": {
+		"scope": "css,scss",
+		"prefix": "contimg",
+		"body": [
+			"display: flex;",
+			"align-items: center;",
+			"justify-content: center;",
+			"",
+			"& img, & svg {",
+			"	height: auto;",
+			"	width: auto;",
+			"	max-width: 100%;",
+			"	max-height: 100%;",
+			"}"
+		],
+		"description": ""
+	},
+}

@@ -1,0 +1,94 @@
+.select {
+	&__item {
+		position: relative;
+        cursor: pointer;
+	}
+	// .select__title
+	&__title {
+        border: .3rem solid #fff;
+        border-radius: 1.5rem;
+        width: 100%;
+        height: 5.1rem;
+        display: flex;
+        align-items: center;
+        padding: 1rem 2.6rem;
+        font-size: 2rem;
+        color: $color-text-primary;
+        padding-right: 4rem;
+        position: relative;
+        transition: box-shadow 0.1s ease .07s;
+
+        &:before {
+			position: absolute;
+			content: "";
+			transition: transform 0.3s ease 0s;
+			top: 50%;
+			right: 1.6rem;
+			transform: translateY(-50%);
+			background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2U9IiNmZmYiPg0KICA8cGF0aCBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGQ9Im0xOS41IDguMjUtNy41IDcuNS03LjUtNy41IiAvPg0KPC9zdmc+DQo=");
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: contain;
+			width: 1.8rem;
+			height: 1.8rem;
+		}
+	}
+	// .select__value
+	&__value {
+
+	}
+
+	// .select__options
+	&__options {
+		display: none;
+		position: absolute;
+		top: calc(100% - 1px);
+		min-width: 100%;
+		left: 0;
+		max-height: 31.5rem;
+		overflow-y: auto;
+		padding: 0.3rem;
+        background-color: #fff;
+        border-radius: 0rem 0rem 1.5rem 1.5rem;
+	}
+	// .select__option
+	&__option {
+		cursor: pointer;
+		font-weight: 400;
+		display: flex;
+		align-items: center;
+		min-height: 4.5rem;
+		transition: color .15s ease, background-color .15s ease;
+		padding: 1rem 2.6rem;
+        border-radius: 1.2rem;
+        color: #cecece;
+        line-height: 1.2em;
+
+        &[style="display: block;"] {
+            display: flex !important;
+        }
+        
+        &:not(:first-child) {
+            margin-top: 0.3rem;
+        }
+
+		@media (min-width: 992px) {
+			&:hover {
+				color: $color-accent;
+				background-color: rgba(0,0,0, .1);
+			}
+		}
+	}
+	&._active {
+		z-index: 5;
+		
+        & .select__title {
+            transition: box-shadow 0s ease .0s;
+            box-shadow: 0 1.6rem 0 0 #fff;
+
+            &:before {
+                transform: translateY(-50%) scaleY(-1);
+            }
+        }
+	}
+}

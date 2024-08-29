@@ -1,0 +1,174 @@
+.presents {
+    padding: 9.4rem 0 8rem;
+
+    @media (min-width: $mq-lg) {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0;
+    }
+
+    &__grid {
+        @media (min-width: $mq-lg) {
+            display: flex;
+            gap: 2.4rem;
+        }
+    }
+
+    &__main {
+        flex: 1 1 auto;
+    }
+
+    &__info {
+        margin-top: 7.4rem;
+
+        @media (min-width: $mq-lg) {
+            margin-top: 0;
+            flex: 0 0 55.3rem;
+        }
+    }
+
+    &__title {
+    }
+
+    &__subtitle {
+        margin-top: 2.5rem;
+
+        @media (min-width: $mq-lg) {
+            margin-top: 3rem;
+        }
+    }
+
+    &__tab-triggers {
+        margin-top: 3.4rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 2.4rem;
+        width: 100%;
+        max-width: 38.7rem;
+
+        @media (min-width: $mq-lg) {
+            margin-top: 3rem;
+            gap: 3.2rem;
+            max-width: 52.2rem;
+        }
+    }
+
+    &__tab-trigger {
+        aspect-ratio: 1 / 1;
+        background-color: #fff;
+        box-shadow: inset 4px 10px 15px 0 rgba(0, 0, 0, 0.25);
+        border-radius: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+        position: relative;
+        transition: background-color .15s ease, box-shadow .15s ease, transform .35s ease;
+
+        @media #{$mouse-device} {
+            &:hover {
+                transform: translateY(-2%);   
+            }
+        }
+        
+        & img, & svg {
+            height: auto;
+            width: auto;
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: .5rem solid transparent;
+            border-radius: 100%;
+            transition: border-color .15s ease;
+        
+        }
+
+        &.tab-active {
+            background-color: transparent;
+            box-shadow: none;
+
+            &::before  {
+                border-color: #fff;
+            }
+        }
+    }
+}
+
+.present-info-card {
+    animation: fadeIn 1s ease forwards;
+
+    @media (min-width: $mq-lg) {
+        border-radius: 2rem;
+        border: 0.3rem solid #fff;
+        padding: 5.8rem 3.5rem;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        gap: 3rem;
+    }
+
+    &__img {
+        height: 24rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        @media (min-width: $mq-lg) {
+            height: auto;
+            width: 14.8rem;
+            flex: 0 0 auto;
+        }
+        
+        & img, & svg {
+            height: auto;
+            width: auto;
+            max-width: 100%;
+            max-height: 100%;
+        }
+    }
+
+    &__text-content {
+        text-align: center;
+        max-width: 30rem;
+        margin-left: auto;
+        margin-right: auto;
+
+        @media (min-width: $mq-lg) {
+            flex: 1 1 auto;
+            max-width: none;
+            text-align: start;
+        }
+    }
+
+    &__title {
+
+    }
+
+    &__text {
+        margin-top: 3rem;
+        font-size: 2.8rem;
+        overflow: hidden; 
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 6;
+    
+        max-height: calc(1.2em * 6);
+        line-height: 1.2em; 
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+}

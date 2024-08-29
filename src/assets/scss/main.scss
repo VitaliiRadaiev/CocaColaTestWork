@@ -1,0 +1,19 @@
+html {
+    height: 100%;
+    font-size: 10px;
+
+    @media (max-width: 991.98px) {
+        font-size: 10px !important;
+    }
+}
+
+body {
+    font-family: $font-family-primary;
+    min-height: 100%;
+    background-color: $color-background;
+    font-size: $font-size;
+    line-height: 1.25;
+    color: $color-text-primary;
+}
+
+// ================

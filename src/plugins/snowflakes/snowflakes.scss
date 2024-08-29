@@ -1,0 +1,30 @@
+.snowflake {
+    position: fixed;
+    top: -10px;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.8;
+    color: #FFF;
+}
+
+@keyframes fall {
+    0% {
+        top: -50px;
+    }
+
+    100% {
+        top: 100vh;
+    }
+}
+
+@keyframes sideWays {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(20px);
+    }
+}

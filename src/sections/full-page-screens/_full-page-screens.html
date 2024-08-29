@@ -1,0 +1,101 @@
+<div class="full-page-screens" data-full-page-screens>
+    <!-- 
+        Продублював слайдера, для для картинок і для контента окремо
+        томущо потрібно було зробити декілька шарів (layers)
+        z-1 картинки
+        z-2 велика сніжинка так що зліва внизу
+        z-3 текстовий контент
+    -->
+    <div class="full-page-screens__backgrounds swiper">
+        <div class="full-page-screens__decor" data-swiper-parallax-y="-140%">
+            <img src="assets/images/snowflake.png" alt="">
+        </div>
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="full-page-screen">
+                    <div class="full-page-screen__bg">
+                        <picture>
+                            <source srcset="assets/images/screen-1-desk.jpg" media="(min-width: 768px)" />
+                            <img src="assets/images/screen-1-mob.jpg" alt="">
+                        </picture>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="full-page-screen">
+                    <div class="full-page-screen__bg">
+                        <picture>
+                            <source srcset="assets/images/screen-2-desk.jpg" media="(min-width: 768px)" />
+                            <img src="assets/images/screen-2-mob.jpg" alt="">
+                        </picture>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="full-page-screen">
+                    <div class="full-page-screen__bg">
+                        <picture>
+                            <source srcset="assets/images/screen-3-desk.jpg" media="(min-width: 768px)" />
+                            <img src="assets/images/screen-3-mob.jpg" alt="">
+                        </picture>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="full-page-screens__content swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="full-page-screen">
+                    <div class="full-page-screen__bg">
+                        <picture>
+                            <source srcset="assets/images/screen-1-desk.jpg" media="(min-width: 768px)" />
+                            <img src="assets/images/screen-1-mob.jpg" alt="">
+                        </picture>
+                    </div>
+                    <div class="full-page-screen__content">
+                        @@include('../intro/_intro.html')
+                    </div>
+                    <div class="full-page-screen__arrow-down-wrapper">
+                        <div class="container-sm">
+                            <button class="full-page-screen__arrow-down" data-action="next-slide">
+                                <svg width="38" height="37" viewBox="0 0 38 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M17.3153 35.7709C18.2939 36.7449 19.8768 36.7412 20.8508 35.7627L36.7237 19.8159C37.6978 18.8373 37.6941 17.2544 36.7155 16.2803C35.7369 15.3063 34.154 15.31 33.18 16.2885L19.0707 30.4635L4.8958 16.3542C3.91722 15.3802 2.33431 15.3838 1.36027 16.3624C0.38623 17.341 0.389905 18.9239 1.36848 19.8979L17.3153 35.7709ZM16.5 0.00580414L16.5789 34.0048L21.5789 33.9932L21.5 -0.00580414L16.5 0.00580414Z"
+                                        fill="white" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="full-page-screen">
+                    <div class="full-page-screen__bg">
+                        <picture>
+                            <source srcset="assets/images/screen-2-desk.jpg" media="(min-width: 768px)" />
+                            <img src="assets/images/screen-2-mob.jpg" alt="">
+                        </picture>
+                    </div>
+                    <div class="full-page-screen__content">
+                        @@include('../presents/_presents.html')
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="full-page-screen">
+                    <div class="full-page-screen__bg">
+                        <picture>
+                            <source srcset="assets/images/screen-3-desk.jpg" media="(min-width: 768px)" />
+                            <img src="assets/images/screen-3-mob.jpg" alt="">
+                        </picture>
+                    </div>
+                    <div class="full-page-screen__content">
+                        @@include('../write-us/_write-us.html')
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
