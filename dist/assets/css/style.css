@@ -2298,6 +2298,7 @@ body {
   width: 100%;
   height: 100dvh;
   padding-top: 14rem;
+  padding-bottom: 2rem;
   pointer-events: none;
 }
 .menu--open .menu__nav {
@@ -2813,7 +2814,7 @@ body {
   }
   .full-page-screen__content {
     height: 100vh;
-    padding: 14.1rem 0;
+    padding: 14.1rem 0 8rem;
   }
   .full-page-screen__arrow-down-wrapper {
     display: block;
